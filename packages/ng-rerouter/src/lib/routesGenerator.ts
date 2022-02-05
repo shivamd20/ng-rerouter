@@ -72,5 +72,3 @@ export function generateRoutes(
     });
   outputFile.save().catch((e) => console.error(e));
 }
-
-generateRoutes();

@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "postinstall": "ngcc --properties es2015 browser module main"
+    "postinstall": "ngcc --properties es2015 browser module main",
+    "serve:example-one": "nx serve example-one",
+    "run": "node dist/packages/ng-rerouter/src/index.js --tsconfig packages/example-one/tsconfig.app.json --output packages/example-one/src/app/page.routing.ts --pageRoot packages/example-one/src/pages"
   },
   "private": true,
   "dependencies": {
@@ -39,7 +41,7 @@
     "@nrwl/tao": "13.4.3",
     "@nrwl/workspace": "13.4.3",
     "@types/jest": "27.0.2",
-    "@types/node": "14.14.33",
+    "@types/node": "^17.0.15",
     "@typescript-eslint/eslint-plugin": "~5.3.0",
     "@typescript-eslint/parser": "~5.3.0",
     "cypress": "^9.1.0",

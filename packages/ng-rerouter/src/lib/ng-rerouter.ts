@@ -1,4 +1,4 @@
-import {Command} from "commander";
+import { Command } from 'commander';
 import {generateRoutes} from './routesGenerator';
 
 const program = new Command();
@@ -8,13 +8,14 @@ program
   .description('File Based Routing for Angular Application')
   .version('0.0.1');
 
-program.command('generate')
+program
   .description('Generates routes for angular given project')
-  .option('-p, --tsconfig', 'typescript project file', "tsconfig.app.json")
-  .option('-o, --output', "Where to store the generated routes?")
-  .option('-r, --pages', "root directory for pages")
-  .action((str, options) => {
-    generateRoutes(options.tsconfig, options.output, options.pages);
-  });
+  .option('--output <path>', "output of the angular application")
+  .option('--pageRoot <path>', "pages dir")
+  .option('--tsconfig <path>', "tsconfig of the angular application");
 
 program.parse();
+const options: Record<string, string> = program.opts();
+generateRoutes(options['tsconfig'], options['output'], options['pageRoot']);
+
+console.log(  `file created at ${options['output']}`)
