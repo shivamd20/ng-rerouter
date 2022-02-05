@@ -48,6 +48,7 @@ export function generateRoutes(
   });
   dir
     .getDescendantSourceFiles()
+    .filter( file => file.getFilePath().endsWith(".route.ts"))
     .sort((dir1, dir2) => dir2.getFilePath().localeCompare(dir1.getFilePath()))
     .forEach((file, index) => {
       const filePath = outputFile.getRelativePathAsModuleSpecifierTo(file);
@@ -58,9 +59,10 @@ export function generateRoutes(
           defaultImport: importSymbolName,
         });
         const pathWithExt = dir.getRelativePathTo(file);
-        const path = pathWithExt.endsWith('index.ts')
-          ? pathWithExt.substring(0, pathWithExt.length - 9)
-          : pathWithExt.substring(0, pathWithExt.length - 3);
+
+        const path = pathWithExt.endsWith('index.route.ts')
+          ? pathWithExt.substring(0, pathWithExt.length - 'index.route.ts'.length -1 )
+          : pathWithExt.substring(0, pathWithExt.length - '.route.ts'.length);
 
         arrayLiteralExpression.addElement(
           Writers.object({
