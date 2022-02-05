@@ -2,7 +2,7 @@ import { Component, NgModule } from '@angular/core';
 
 
 @Component({
-  template: `root`
+  template: `fallback page`
 })
 export default class C{
 

@@ -2,7 +2,7 @@ import { Component, NgModule } from '@angular/core';
 
 
 @Component({
-  template: `root`
+  template: `pages/nested/index.ts`
 })
 export default class C{
 
