@@ -25,7 +25,16 @@ console.log(  `file created at ${options['output']}`)
 
 if(options['watch']) {
   console.log("Watching for file changes...")
-  chokidar.watch(options['pageRoot']).on('all', (event, path) => {
+  chokidar.watch(options['pageRoot'], {
+    ignoreInitial: true,
+    awaitWriteFinish: {
+      stabilityThreshold: 2000,
+      pollInterval: 100
+    }
+  }).on('all', (event, path) => {
+    console.time("rebuilding")
     generateRoutes(options['tsconfig'], options['output'], options['pageRoot']);
+    console.timeEnd("rebuilding")
   });
 }
+
