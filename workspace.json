@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "example-one": "packages/example-one",
     "ng-rerouter": "packages/ng-rerouter"
   }
 }
