@@ -40,3 +40,4 @@ Thumbs.db
 
 .angular
 /packages/example-one/src/app/page.routing.ts
+/packages/ng-rerouter/node_modules/

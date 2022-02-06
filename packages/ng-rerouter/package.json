@@ -1,5 +1,21 @@
 {
-  "name": "@ng-rerouter/ng-rerouter",
+  "name": "ng-rerouter",
   "version": "0.0.1",
-  "type": "commonjs"
+  "type": "commonjs",
+  "description": "This library was generated with [Nx](https://nx.dev).",
+  "main": "src/index.js",
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "commander": "^9.0.0",
+    "ts-morph": "^13.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "ng-rerouter": "./src/lib/cli.js"
+  },
+  "author": "",
+  "license": "ISC"
 }
