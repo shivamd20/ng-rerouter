@@ -5,7 +5,7 @@
   "scripts": {
     "postinstall": "ngcc --properties es2015 browser module main",
     "serve:example-one": "nx serve example-one",
-    "run": "node dist/packages/ng-rerouter/src/index.js --tsconfig packages/example-one/tsconfig.app.json --output packages/example-one/src/app/page.routing.ts --pageRoot packages/example-one/src/pages"
+    "generate:pages": "node dist/packages/ng-rerouter/src/index.js --tsconfig packages/example-one/tsconfig.app.json --output packages/example-one/src/app/page.routing.ts --pageRoot packages/example-one/src/pages"
   },
   "private": true,
   "dependencies": {
