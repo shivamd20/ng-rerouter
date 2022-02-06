@@ -1,8 +1,8 @@
 {
   "name": "ng-rerouter",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "type": "commonjs",
-  "description": "This library was generated with [Nx](https://nx.dev).",
+  "description": "File based routing for Angular",
   "main": "src/index.js",
   "dependencies": {
     "chokidar": "^3.5.3",

@@ -11,7 +11,7 @@ File base routing for angular
 <br>
 🚧 Lazy loaded modules
 <br>
-🚧 Additional configuration (guards, resolvers, etc)
+✅ Additional configuration (guards, resolvers, etc)
 
 ### ⚠️ This lib is not ready for production usage
 
@@ -68,6 +68,16 @@ import {routes } from '../app/page.routing';
 **/*.routing.ts
 ```
 
+## Additional Configuration
+* create a named export `routeConfig` in your `*.route.ts` file to provide additional configuration for route
+
+```typescript
+export const routeConfig: Partial<Route> = {
+  data: {
+    title: 'ramesh'
+  }
+};
+```
 
 
 ## API
