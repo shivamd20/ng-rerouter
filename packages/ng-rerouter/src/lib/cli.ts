@@ -13,9 +13,9 @@ program
 
 program
   .description('Generates routes for angular given project')
-  .option('--output <path>', "output of the angular application")
-  .option('--pageRoot <path>', "pages dir")
-  .option('--tsconfig <path>', "tsconfig of the angular application")
+  .option('--output <path>', "output of the angular application","src/page.routing.ts" )
+  .option('--pageRoot <path>', "pages dir", "src/pages")
+  .option('--tsconfig <path>', "tsconfig of the angular application", "tsconfig.app.json")
   .option('--watch [boolean]', "watch for file changes", false);
 ;
 
@@ -23,14 +23,18 @@ program.parse();
 const options: Record<string, string> = program.opts();
 generateRoutes(options['tsconfig'], options['output'], options['pageRoot']);
 
+
+console.log(`File created at ${options['output']}`);
+
 if(options['watch']) {
   console.log("Watching for file changes...")
   chokidar.watch(options['pageRoot'], {
-    ignoreInitial: true
+    ignoreInitial: true,
+    persistent: true,
+    awaitWriteFinish: true
   }).on('all', (event, path) => {
     console.time("rebuilding")
     generateRoutes(options['tsconfig'], options['output'], options['pageRoot']);
     console.timeEnd("rebuilding")
   });
 }
-
