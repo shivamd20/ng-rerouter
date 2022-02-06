@@ -13,7 +13,7 @@ File base routing for angular
 <br>
 🚧 Additional configuration (guards, resolvers, etc)
 
-# Getting Started
+## Getting Started
 
 * in your angular application, create a directory named `pages` in the `src` directory 
 ```bash
@@ -47,7 +47,28 @@ import {routes } from '../app/page.routing';
     RouterModule.forRoot(routes)
 ```
 
-# API
+* Now, adding new files in the `pages` directory will automatically update the `pages.routing.ts`
+
+##only files ending with `.route.ts` are considered for routing 
+
+##index.route.ts
+`index.route.ts` is a special file which is used routed at the directory path.
+
+## Dynamic routes
+* following file name convention is used to create dynamic route
+`:filename.route.ts`
+
+## Wildcard routes
+* Wild card routes are created by using the following convention
+```
+**.routing.ts
+*.routing.ts
+**/*.routing.ts
+```
+
+
+
+## API
 ```
   -V, --version      output the version number
   --output <path>    output path for the generated routes (default: "src/page.routing.ts")
