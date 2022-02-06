@@ -13,6 +13,8 @@ File base routing for angular
 <br>
 🚧 Additional configuration (guards, resolvers, etc)
 
+### ⚠️ This lib is not ready for production usage
+
 ## Getting Started
 
 * in your angular application, create a directory named `pages` in the `src` directory 
