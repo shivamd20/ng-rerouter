@@ -16,6 +16,6 @@
   "bin": {
     "ng-rerouter": "./src/lib/cli.js"
   },
-  "author": "",
+  "author": "Shivam Dwivedi",
   "license": "ISC"
 }
