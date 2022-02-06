@@ -22,7 +22,6 @@ export function generateRoutes(
   const outputFile = project.createSourceFile(outputPath, undefined, {
     overwrite: true,
   });
-
   project.addSourceFilesAtPaths(pagesRootDirectory + '/**/*');
   const dir = project.getDirectoryOrThrow(pagesRootDirectory)!;
   outputFile.addImportDeclaration({
