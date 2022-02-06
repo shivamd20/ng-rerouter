@@ -1,9 +1,8 @@
-import {
-  Project,
-  SyntaxKind,
-  VariableDeclarationKind,
-  Writers,
-} from 'ts-morph';
+import { Project, SourceFile, SyntaxKind, VariableDeclarationKind, Writers } from 'ts-morph';
+
+function isAdditionalConfigDefined(file: SourceFile) {
+  return file.getExportSymbols().some(exSymbol => exSymbol.getName() === 'routeConfig');
+}
 
 /**
  * @param tsConfigFilePath
@@ -63,13 +62,37 @@ export function generateRoutes(
           ? pathWithExt.substring(0, pathWithExt.length - 'index.route.ts'.length -1 )
           : pathWithExt.substring(0, pathWithExt.length - '.route.ts'.length);
 
+
+
+        console.log("Route found: " + file.getFilePath());
+
+
+        file.getExportDeclarations().map(ex => ex.getNamedExports()).forEach((nx) => {
+          console.log(nx.map(n => n.getName()));
+        });
+
         arrayLiteralExpression.addElement(
           Writers.object({
             path: (writer) => writer.quote(path),
             component: importSymbolName,
           })
         );
+
+        if(isAdditionalConfigDefined(file)){
+
+          const routeConfigSymbol = `routeConfig_${index}`;
+
+          outputFile.addImportDeclaration({
+            moduleSpecifier: filePath,
+            namedImports: [`routeConfig as ${routeConfigSymbol}`]
+          })
+
+          arrayLiteralExpression.getElements()[arrayLiteralExpression.getElements().length -1]
+            .asKind(SyntaxKind.ObjectLiteralExpression)
+            ?.addSpreadAssignment({expression: `${routeConfigSymbol}`});
+        }
       }
     });
   outputFile.save().catch((e) => console.error(e));
 }
+
