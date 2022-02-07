@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "example-one": "packages/example-one",
+    "example-one-e2e": "packages/example-one-e2e",
     "ng-rerouter": "packages/ng-rerouter"
   }
 }

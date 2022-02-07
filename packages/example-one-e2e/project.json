@@ -1,0 +1,29 @@
+{
+  "root": "packages/example-one-e2e",
+  "sourceRoot": "packages/example-one-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@ns3/nx-jest-playwright:jest-playwright",
+      "options": {
+        "devServerTarget": "example-one:serve",
+        "jestConfig": "packages/example-one-e2e/jest.config.js",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "example-one:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/example-one-e2e/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["example-one"]
+}
