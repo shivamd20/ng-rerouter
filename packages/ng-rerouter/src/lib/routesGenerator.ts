@@ -4,6 +4,15 @@ function isAdditionalConfigDefined(file: SourceFile) {
   return file.getExportSymbols().some(exSymbol => exSymbol.getName() === 'routeConfig');
 }
 
+function capitalizeFirstLetter(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function generateFileName(path: string, index: number) {
+  const segments = path.split("/");
+  return capitalizeFirstLetter(`${segments[segments.length - 1].replace(/[^0-9a-z]/gi, '')}_${index}`);
+}
+
 /**
  * @param tsConfigFilePath
  * @param outputPath
@@ -51,11 +60,8 @@ export function generateRoutes(
     .forEach((file, index) => {
       const filePath = outputFile.getRelativePathAsModuleSpecifierTo(file);
       if (filePath.length !== 0) {
-        const importSymbolName = `module_${index}`;
-        outputFile.addImportDeclaration({
-          moduleSpecifier: filePath,
-          defaultImport: importSymbolName,
-        });
+
+
         const pathWithExt = dir.getRelativePathTo(file);
 
         const path = pathWithExt.endsWith('index.route.ts')
@@ -63,9 +69,13 @@ export function generateRoutes(
           : pathWithExt.substring(0, pathWithExt.length - '.route.ts'.length);
 
 
-
         console.log("Route found: " + file.getFilePath());
 
+        const importSymbolName = generateFileName(path, index);
+        outputFile.addImportDeclaration({
+          moduleSpecifier: filePath,
+          defaultImport: importSymbolName,
+        });
 
         file.getExportDeclarations().map(ex => ex.getNamedExports()).forEach((nx) => {
           console.log(nx.map(n => n.getName()));
@@ -79,8 +89,7 @@ export function generateRoutes(
         );
 
         if(isAdditionalConfigDefined(file)){
-
-          const routeConfigSymbol = `routeConfig_${index}`;
+          const routeConfigSymbol = `${importSymbolName}_routeConfig`;
 
           outputFile.addImportDeclaration({
             moduleSpecifier: filePath,
