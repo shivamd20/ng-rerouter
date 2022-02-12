@@ -1,6 +1,6 @@
 {
   "name": "ng-rerouter",
-  "version": "0.0.18",
+  "version": "0.0.19-0",
   "type": "commonjs",
   "description": "File based routing for Angular",
   "main": "src/index.js",

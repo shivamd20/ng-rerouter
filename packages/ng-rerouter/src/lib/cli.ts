@@ -2,7 +2,7 @@
 
 import { Command } from 'commander';
 import * as chokidar from "chokidar";
-import { generateRoutes } from './routesGenerator';
+import { generateRoutes } from './routesGenerator2';
 
 const program = new Command();
 
