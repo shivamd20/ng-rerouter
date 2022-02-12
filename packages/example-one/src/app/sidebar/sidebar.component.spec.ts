@@ -1,9 +1,11 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTreeModule } from '@angular/material/tree';
 
 import { SidebarComponent } from './sidebar.component';
+import { RouterModule } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
 
 describe('SidebarComponent', () => {
   let component: SidebarComponent;
@@ -11,11 +13,19 @@ describe('SidebarComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SidebarComponent ],
+      declarations: [SidebarComponent],
       imports: [
         MatButtonModule,
         MatIconModule,
         MatTreeModule,
+        RouterModule.forRoot([]),
+
+      ],
+      providers: [
+        {
+          provide: APP_BASE_HREF,
+          useValue: ''
+        }
       ]
     }).compileComponents();
   }));
