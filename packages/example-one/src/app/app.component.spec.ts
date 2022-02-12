@@ -2,12 +2,18 @@ import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [AppComponent, NxWelcomeComponent],
+      imports: [RouterTestingModule, MatTreeModule,
+        MatIconModule,
+        MatButtonModule],
+      declarations: [AppComponent, NxWelcomeComponent, SidebarComponent]
     }).compileComponents();
   });
 
