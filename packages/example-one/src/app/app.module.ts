@@ -5,12 +5,12 @@ import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
 
-import {routes } from '../app/page.routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { routes } from '../pages/__routes';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent, SidebarComponent],
@@ -20,9 +20,10 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserAnimationsModule,
     MatTreeModule,
     MatIconModule,
-    MatButtonModule,
+    MatButtonModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

@@ -1,14 +1,22 @@
 import { Component, NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
-  template: `pages/nested/index.ts`
+  template: `pages/nested/index.ts
+
+  <router-outlet></router-outlet>
+
+
+  `
 })
-export default class C{
+export default class C {
 
 }
 
 @NgModule({
-  declarations: [C]
+  declarations: [C],
+  imports: [RouterModule]
 })
-class Module{}
+class Module {
+}
